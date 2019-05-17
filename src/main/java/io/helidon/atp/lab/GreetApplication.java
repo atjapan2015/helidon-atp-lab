@@ -16,23 +16,40 @@
 
 package io.helidon.atp.lab;
 
+import java.util.Collections;
 import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
-import io.helidon.common.CollectionsHelper;
+import org.glassfish.jersey.server.mvc.freemarker.FreemarkerMvcFeature;
+import org.glassfish.jersey.server.mvc.mustache.MustacheMvcFeature;
+
+import io.helidon.atp.lab.common.config.GlobalResourceConfig;
 
 /**
  * Simple Application that produces a greeting message.
  */
 @ApplicationScoped
 @ApplicationPath("/")
-public class GreetApplication extends Application {
+public class GreetApplication extends GlobalResourceConfig {
 
-    @Override
-    public Set<Class<?>> getClasses() {
-        return CollectionsHelper.setOf(GreetResource.class);
-    }
+	@Override
+	public Set<Class<?>> getClasses() {
+		if (super.cachedClassesView == null) {
+			cachedClasses = _getClasses();
+			cachedClasses.add(GreetResource.class);
+			cachedClassesView = Collections.unmodifiableSet(cachedClasses);
+		}
+		return cachedClassesView;
+	}
+
+	public GreetApplication() {
+		super();
+		this.packages(GreetApplication.class.getPackage().getName())
+				.property(MustacheMvcFeature.TEMPLATE_BASE_PATH, "/templates/mustache")
+				.register(MustacheMvcFeature.class)
+				.property(FreemarkerMvcFeature.TEMPLATE_BASE_PATH, "/templates/freemarker")
+				.register(FreemarkerMvcFeature.class);
+	}
 }

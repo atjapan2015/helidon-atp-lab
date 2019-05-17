@@ -213,6 +213,24 @@
 				<artifactId>logback-classic</artifactId>
 				<version>1.2.3</version>
 			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.ext/jersey-mvc -->
+			<dependency>
+				<groupId>org.glassfish.jersey.ext</groupId>
+				<artifactId>jersey-mvc</artifactId>
+				<version>2.26</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.ext/jersey-mvc-mustache -->
+			<dependency>
+				<groupId>org.glassfish.jersey.ext</groupId>
+				<artifactId>jersey-mvc-mustache</artifactId>
+				<version>2.26</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.ext/jersey-mvc-freemarker -->
+			<dependency>
+			    <groupId>org.glassfish.jersey.ext</groupId>
+			    <artifactId>jersey-mvc-freemarker</artifactId>
+			    <version>2.26</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -277,6 +295,18 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-mvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-mvc-mustache</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.glassfish.jersey.ext</groupId>
+		    <artifactId>jersey-mvc-freemarker</artifactId>
+		</dependency>	
 		<dependency>
 			<groupId>org.jboss</groupId>
 			<artifactId>jandex</artifactId>
